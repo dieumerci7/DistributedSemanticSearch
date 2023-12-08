@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ris-service
+spec:
+  selector:
+    app: ris-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 12345
+  type: LoadBalancer  # Use LoadBalancer for external access

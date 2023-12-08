@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ris-deployment-node1
+spec:
+  replicas: 1  # Set the desired number of replicas
+  selector:
+    matchLabels:
+      app: ris-server
+  template:
+    metadata:
+      labels:
+        app: ris-server
+    spec:
+      containers:
+      - name: ris-container
+        image: ris-image:latest
+        ports:
+        - containerPort: 12345
