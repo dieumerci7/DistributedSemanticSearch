@@ -23,7 +23,7 @@ while True:
         print(f"Received data: {data.decode()}")
 
         # Send a response back to the client
-        response = str(data) + " Messi > Ronaldo"
+        response = str(data) + "\nResponse from the server!"
         client_socket.sendall(response.encode())
     finally:
         # Clean up the connection
