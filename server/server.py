@@ -1,7 +1,6 @@
 from flask import Flask, request
 import socket
-from sklearn.metrics.pairwise import cosine_similarity
-from embedding import embed
+
 
 app = Flask(__name__)
 
