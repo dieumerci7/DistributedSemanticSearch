@@ -10,7 +10,7 @@ class ServerClient:
 
     def send_data_to_server(self, data):
         try:
-            response = requests.get(self.server_url, params={'data': data})
+            response = requests.get(self.server_url, params={'query': data})
             response_data = response.json()
 
             if response.status_code == 200 and response_data.get('status') == 'success':
