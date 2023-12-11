@@ -1,7 +1,7 @@
 import requests
 import psycopg2
 import time
-import timeit
+from faker import Faker
 from multiprocessing import Pool
 
 server_url = 'http://localhost:80'
@@ -18,11 +18,7 @@ def send_query(user_id):
         query_start_time = time.time()
 
         # Simulate a query
-        query_params = {
-            'authors': f'sample_author_{user_id}',
-            'title': f'sample_title_{query_number}',
-            'abstract': f'sample_abstract_{query_number}'
-        }
+        query_params = {'query': fake.paragraph(nb_sentences=2)}
 
         # Make a request to the server
         response = requests.get(f"{server_url}", params=query_params)
