@@ -35,7 +35,7 @@ def return_data(text):
         cursor = connection.cursor(cursor_factory=extras.RealDictCursor)
 
         find_nearest_embedding_query = ("SELECT authors, title, abstract FROM papers "
-                                        "ORDER BY encoded_abstract <-> %s::vector(1024) LIMIT 1;")
+                                        "ORDER BY 1 - (encoded_abstract <=> %s::vector(1024)) LIMIT 1;")
         cursor.execute(find_nearest_embedding_query, (emb.reshape(-1,).tolist(),))
 
         result = cursor.fetchone()
