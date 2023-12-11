@@ -8,7 +8,6 @@ services:
     ports:
       - "5000"
 
-
   nginx:
     image: nginx:latest
     volumes:
@@ -17,3 +16,13 @@ services:
       - server
     ports:
       - "80:80"
+
+  postgres:
+    image: ankane/pgvector:latest
+    environment:
+      POSTGRES_DB: arxiv_database
+      POSTGRES_USER: arxiv_user
+      POSTGRES_PASSWORD: arxiv_password
+    ports:
+      - "5432:5432"
+      # - "5000:5000"  # Expose pgvector extension port
