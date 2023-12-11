@@ -7,7 +7,7 @@ from angle_emb import AnglE, Prompts
 
 # Database connection parameters
 db_params = {
-    'host': 'localhost',
+    'host': 'postgres',
     'port': 5432,
     'database': 'arxiv_database',
     'user': 'arxiv_user',
@@ -75,4 +75,4 @@ def receive_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, port=12345)
+    app.run(debug=False)
