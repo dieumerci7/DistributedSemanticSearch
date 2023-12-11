@@ -1,15 +1,19 @@
 import requests
-import psycopg2
 import time
 from faker import Faker
 from multiprocessing import Pool
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 server_url = 'http://localhost:80'
 fake = Faker()
 
 # Number of clients to simulate
 NUM_CLIENTS = 10
-NUM_QUERIES_PER_USER = 1000
+NUM_QUERIES_PER_USER = 100
+
 
 def send_query(user_id):
     user_start_time = time.time()
@@ -32,13 +36,14 @@ def send_query(user_id):
 
     # Calculate mean time for individual queries
     mean_individual_query_time = sum(individual_query_times) / len(individual_query_times)
-    print(f"User {user_id}: Mean Time for Individual Query: {mean_individual_query_time:.4f} seconds")
+    logging.info(f"User {user_id}: Mean Time for Individual Query: {mean_individual_query_time:.4f} seconds")
 
     # Calculate overall time for the user
     user_total_time = user_end_time - user_start_time
-    print(f"User {user_id}: Total Time for All Queries: {user_total_time:.4f} seconds")
+    logging.info(f"User {user_id}: Total Time for All Queries: {user_total_time:.4f} seconds")
 
     return user_total_time
+
 
 def main():
     # Create a pool of clients
