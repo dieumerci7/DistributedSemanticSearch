@@ -10,4 +10,4 @@ COPY . /server
 RUN pip install -r requirements.txt
 
 # Command to run your server
-CMD gunicorn --bind 0.0.0.0:5000 server:app
+CMD gunicorn --bind 0.0.0.0:5000 server:app --timeout 500

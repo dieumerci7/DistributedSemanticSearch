@@ -31,11 +31,11 @@ def add_column_and_update_data(cursor, encoded_abstracts):
     update_query = "UPDATE papers SET encoded_abstract = %s WHERE id = %s;"
 
     cnt = 0
-    for i, encoded_abstract in tqdm(enumerate(encoded_abstracts), total=3000,
+    for i, encoded_abstract in tqdm(enumerate(encoded_abstracts), total=30000,
                                     desc="Add embeddings", unit=" lines"):
         cursor.execute(update_query, (encoded_abstract.reshape(-1,).tolist(), i + 1))
         cnt += 1
-        if cnt == 3000:
+        if cnt == 30000:
             break
 
     print("Data updated in the 'encoded_abstract' column.")

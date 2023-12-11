@@ -31,7 +31,7 @@ def insert_data_from_json(cursor, file_path):
         arxiv_data = json.load(file)
 
         cnt = 0
-        for entry in tqdm(arxiv_data, total=3000, desc="JSON to DB",
+        for entry in tqdm(arxiv_data, total=30000, desc="JSON to DB",
                                       unit=" lines"):
             authors = entry.get('authors', '')
             title = entry.get('title', '')
@@ -44,7 +44,7 @@ def insert_data_from_json(cursor, file_path):
             cursor.execute(insert_query, record)
 
             cnt += 1
-            if cnt == 3000:
+            if cnt == 30000:
                 break
 
         print("Data inserted into 'papers'.")
