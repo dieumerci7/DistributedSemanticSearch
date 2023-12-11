@@ -35,7 +35,7 @@ def return_data(text):
         cursor = connection.cursor(cursor_factory=extras.RealDictCursor)
 
         find_nearest_embedding_query = ("SELECT authors, title, abstract FROM papers "
-                                        "ORDER BY encoded_abstract <=> %s::vector(1024) LIMIT 1;")
+                                        "ORDER BY encoded_abstract <-> %s::vector(1024) LIMIT 1;")
         cursor.execute(find_nearest_embedding_query, (emb.reshape(-1,).tolist(),))
 
         result = cursor.fetchone()
@@ -68,10 +68,13 @@ def receive_data():
     try:
         data = request.args.to_dict()  # Assumes the client sends JSON data
         print("Received data:", data['query'])
-        return return_data(data['query'])
+        result = return_data(data['query'])
+        result['status'] = 'success'
+        result['host'] = socket.gethostname()
+        return result
     except Exception as e:
         print("Error processing request:", e)
-        return {'status': 'error'}
+        return {'status': 'error', 'host': socket.gethostname()}
 
 
 if __name__ == '__main__':
