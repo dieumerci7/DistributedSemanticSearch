@@ -2,7 +2,7 @@ import requests
 import argparse
 
 DEFAULT_IP = '127.0.0.1'
-DEFAULT_PORT = 5000
+DEFAULT_PORT = 80
 
 class ServerClient:
     def __init__(self, server_url):
