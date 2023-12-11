@@ -1,0 +1,42 @@
+Server Software:        nginx/1.25.3
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /
+Document Length:        153 bytes
+
+Concurrency Level:      50
+Time taken for tests:   4.807 seconds
+Complete requests:      1000
+Failed requests:        4
+   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
+Non-2xx responses:      1000
+Total transferred:      353496 bytes
+Total body sent:        64394000
+HTML transferred:       152545 bytes
+Requests per second:    208.02 [#/sec] (mean)
+Time per request:       240.358 [ms] (mean)
+Time per request:       4.807 [ms] (mean, across all concurrent requests)
+Transfer rate:          71.81 [Kbytes/sec] received
+                        13081.50 kb/s sent
+                        13153.31 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.8      0       6
+Processing:    14  234  51.8    250     362
+Waiting:        8  234  51.9    250     362
+Total:         14  235  51.4    250     363
+
+Percentage of the requests served within a certain time (ms)
+  50%    250
+  66%    258
+  75%    262
+  80%    265
+  90%    274
+  95%    291
+  98%    348
+  99%    356
+ 100%    363 (longest request)
+
+Під час тесту з рівнем одночасності 50 сервер nginx обробив 1000 запитів протягом 4.807 секунд, досягнувши середньої швидкості виконання 208.02 запити в секунду. Сервер виявив 4 невдалих запитання, всі з яких призвели до відповідей не з кодами 2xx. Показники передачі вказують на ефективний обмін даними, з середнім часом на запит 240.358 мс та швидкістю передачі 13,153.31 кб/с. Часи підключення показали швидку реакцію, і більшість запитів були оброблені протягом 250 мс, при цьому найдовший запит зайняв 363 мс.
