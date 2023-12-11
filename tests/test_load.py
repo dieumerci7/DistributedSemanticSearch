@@ -5,6 +5,7 @@ from faker import Faker
 from multiprocessing import Pool
 
 server_url = 'http://localhost:80'
+fake = Faker()
 
 # Number of clients to simulate
 NUM_CLIENTS = 10
