@@ -10,7 +10,7 @@ The project is comprised of three main components: the client, the server, and t
 
 - **Client:** A console client that receives prompts and forwards requests to an Nginx load balancer.
   
-- **Server:** Multiple server instances handle requests redirected by the load balancer. Each server finds text embeddings using the WhereIsAI/UAE-Large-V1 model and queries a PostgreSQL database for the article with the most similar embedding, utilizing cosine similarity as the metric.
+- **Server:** Multiple server instances handle requests redirected by the load balancer. Each server finds text embeddings using the WhereIsAI/UAE-Large-V1 model and queries a PostgreSQL database for the article with the most similar embedding using vector search and utilizing cosine similarity as the metric.
   
 - **Database:** PostgreSQL database stores research paper information, and the server interacts with it to retrieve relevant articles.
 
