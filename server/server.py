@@ -68,10 +68,13 @@ def receive_data():
     try:
         data = request.args.to_dict()  # Assumes the client sends JSON data
         print("Received data:", data['query'])
-        return return_data(data['query'])
+        result = return_data(data['query'])
+        result['status'] = 'success'
+        result['host'] = socket.gethostname()
+        return result
     except Exception as e:
         print("Error processing request:", e)
-        return {'status': 'error'}
+        return {'status': 'error', 'host': socket.gethostname()}
 
 
 if __name__ == '__main__':
